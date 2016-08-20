@@ -1,19 +1,19 @@
 - job:
-    name: locanda_jjb_<appndid>
+    name: spring_petclinic_jjb_<appndid>
     project-type: freestyle
     defaults: global
-    description: 'Build and Deploy of Locanda via JJB - Arunes'
+    description: 'Build and Deploy of petclinc via JJB -Branch Kishor'
     block-downstream: false
     concurrent: true
     node: master
     properties:
        - github:
-          url: https://github.com/devops-basservice/locanda.git
+          url: https://github.com/devopsbasservice/springpetclinic
     scm:
        - git:
-          url: https://github.com/devops-basservice/locanda.git
+          url: https://github.com/devopsbasservice/springpetclinic
           branches:
-            - master
+            - kishor
           git-config-name: Kishore Ramanan
           git-config-email: kishorramanan@gmail.com
           extensions:
@@ -27,15 +27,15 @@
             pom: pom.xml
             goals: clean package # sonar:sonar -Dsonar.host.url=http://54.197.152.39:9001/
        #- shell: ssh -oStrictHostKeyChecking=no -i /usr/share/master.pem ubuntu@54.174.100.219 "ifconfig"
-       - shell: cd /var/jenkins/workspace/locanda_jjb_<appndid>/Locanda_target/Locanda_resources/solr/
-       - shell: ssh -oStrictHostKeyChecking=no -i /usr/share/master.pem ubuntu@54.174.100.219 "mkdir -p /var/jenkins/workspace/locanda_jjb_<appndid>/Locanda_target"
-       - shell: scp -rp -oStrictHostKeyChecking=no -i /usr/share/master.pem "/var/jenkins/workspace/locanda_jjb_<appndid>/Locanda_target/Locanda_resources/" "ubuntu@54.174.100.219:/var/jenkins/workspace/locanda_jjb_<appndid>/Locanda_target/"
-       - shell: sleep 10
-       - shell: ssh -oStrictHostKeyChecking=no -i /usr/share/master.pem ubuntu@54.174.100.219 "/opt/tomcat/bin/shutdown.sh"
-       - shell: sleep 5
-       - shell: ssh -oStrictHostKeyChecking=no -i /usr/share/master.pem ubuntu@54.174.100.219 "rm -rf /opt/tomcat/webapps/Locan*"
-       - shell: scp -oStrictHostKeyChecking=no -i /usr/share/master.pem "/var/jenkins/workspace/locanda_jjb_<appndid>/Locanda_target/Locanda.war" "ubuntu@54.174.100.219:/opt/tomcat/webapps/"
-       - shell: ssh -oStrictHostKeyChecking=no -i /usr/share/master.pem ubuntu@54.174.100.219 "/opt/tomcat/bin/startup.sh"
+       #- shell: cd /var/jenkins/workspace/locanda_jjb_<appndid>/Locanda_target/Locanda_resources/solr/
+       #- shell: ssh -oStrictHostKeyChecking=no -i /usr/share/master.pem ubuntu@54.174.100.219 "mkdir -p /var/jenkins/workspace/locanda_jjb_<appndid>/Locanda_target"
+       #- shell: scp -rp -oStrictHostKeyChecking=no -i /usr/share/master.pem "/var/jenkins/workspace/locanda_jjb_<appndid>/Locanda_target/Locanda_resources/" "ubuntu@54.174.100.219:/var/jenkins/workspace/locanda_jjb_<appndid>/Locanda_target/"
+       #- shell: sleep 10
+       #- shell: ssh -oStrictHostKeyChecking=no -i /usr/share/master.pem ubuntu@54.174.100.219 "/opt/tomcat/bin/shutdown.sh"
+       #- shell: sleep 5
+       #- shell: ssh -oStrictHostKeyChecking=no -i /usr/share/master.pem ubuntu@54.174.100.219 "rm -rf /opt/tomcat/webapps/Locan*"
+       #- shell: scp -oStrictHostKeyChecking=no -i /usr/share/master.pem "/var/jenkins/workspace/locanda_jjb_<appndid>/Locanda_target/Locanda.war" "ubuntu@54.174.100.219:/opt/tomcat/webapps/"
+       #- shell: ssh -oStrictHostKeyChecking=no -i /usr/share/master.pem ubuntu@54.174.100.219 "/opt/tomcat/bin/startup.sh"
 
     publishers:
        - logstash:
