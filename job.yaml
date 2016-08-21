@@ -17,7 +17,7 @@
           git-config-name: Kishore Ramanan
           git-config-email: kishorramanan@gmail.com
           extensions:
-            per-build-tag: true
+            per-build-tag: true 
     triggers:
        - pollscm:
           cron: "* * * * *"
