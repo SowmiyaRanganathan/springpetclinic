@@ -1,6 +1,5 @@
-<<<<<<< HEAD
 - job:
-    name: spring_petclinic_jjb_aruneshdemo1_<appndid>
+    name: spring_petclinic_jjb_kishor_<appndid>
     project-type: freestyle
     defaults: global
     description: 'Build and Deploy of petclinc via JJB -Branch Kishor'
@@ -27,13 +26,13 @@
             maven-version: Maven3
             pom: pom.xml
             goals: clean install #sonar:sonar -Dsonar.host.url=http://50.17.36.28:9001/
-       #- shell: ssh -oStrictHostKeyChecking=no -i /usr/share/master.pem ubuntu@54.174.100.219 "ifconfig"
-      # - shell: cd /var/jenkins/workspace/spring_petclinic_jjb_<appndid>/target/
-       #- shell: ssh -oStrictHostKeyChecking=no -i /usr/share/master.pem ubuntu@54.174.100.219 "/opt/tomcat/bin/shutdown.sh"
-      # - shell: sleep 10
-       #- shell: ssh -oStrictHostKeyChecking=no -i /usr/share/master.pem ubuntu@54.174.100.219 "rm -rf /opt/tomcat/webapps/Locan*"
-      # - shell: scp -rp -oStrictHostKeyChecking=no -i /usr/share/master.pem "/var/jenkins/workspace/spring_petclinic_jjb_<appndid>/target/petclinic.war" "ubuntu@54.174.100.219:/opt/tomcat/webapps/"
-      # - shell: ssh -oStrictHostKeyChecking=no -i /usr/share/master.pem ubuntu@54.174.100.219 "/opt/tomcat/bin/startup.sh"
+       - shell: ssh -oStrictHostKeyChecking=no -i /usr/share/master.pem ubuntu@v "ifconfig"
+       - shell: cd /var/jenkins/workspace/spring_petclinic_jjb_<appndid>/target/
+       - shell: ssh -oStrictHostKeyChecking=no -i /usr/share/master.pem ubuntu@52.91.246.250 "/opt/tomcat/bin/shutdown.sh"
+       - shell: sleep 10
+       - shell: ssh -oStrictHostKeyChecking=no -i /usr/share/master.pem ubuntu@52.91.246.250 "rm -rf /opt/tomcat/webapps/Locan*"
+       - shell: scp -rp -oStrictHostKeyChecking=no -i /usr/share/master.pem "/var/jenkins/workspace/spring_petclinic_jjb_<appndid>/target/petclinic.war" "ubuntu@52.91.246.250:/opt/tomcat/webapps/"
+       - shell: ssh -oStrictHostKeyChecking=no -i /usr/share/master.pem ubuntu@52.91.246.250 "/opt/tomcat/bin/startup.sh"
 
     publishers:
        - logstash:
@@ -46,52 +45,3 @@
 
 - docker_image:
     name: devopsbasservice/basejenkins_maven_git_java
-=======
-- job:
-    name: iam_jjb_auto_<appndid>
-    project-type: freestyle
-    defaults: global
-    description: 'Build and Deploy of petclinc via JJB -Branch Arunesh - Demo'
-    block-downstream: false
-    concurrent: true
-    node: master
-    properties:
-       - github:
-          url: https://github.com/devopsbasservice/springpetclinic
-    scm:
-       - git:
-          url: https://github.com/devopsbasservice/springpetclinic
-          branches:
-            - arunesh
-          git-config-name: Arunesh
-          git-config-email: arunesh@gmail.com
-          extensions:
-            per-build-tag: true
-    triggers:
-       - pollscm:
-          cron: "* * * * *"
-    builders:
-       - maven-target:
-            maven-version: Maven3
-            pom: pom.xml
-            goals: clean install sonar:sonar -Dsonar.host.url=http://54.197.152.39:9001/
-       #- shell: ssh -oStrictHostKeyChecking=no -i /usr/share/master.pem ubuntu@54.174.100.219 "ifconfig"
-       #- shell: cd /var/jenkins/workspace/spring_petclinic_jjb_<appndid>/target/
-      # - shell: ssh -oStrictHostKeyChecking=no -i /usr/share/master.pem ubuntu@54.174.100.219 "/opt/tomcat/bin/shutdown.sh"
-      # - shell: sleep 10
-       #- shell: ssh -oStrictHostKeyChecking=no -i /usr/share/master.pem ubuntu@54.174.100.219 "rm -rf /opt/tomcat/webapps/Locan*"
-      # - shell: scp -rp -oStrictHostKeyChecking=no -i /usr/share/master.pem "/var/jenkins/workspace/spring_petclinic_jjb_<appndid>/target/petclinic.war" "ubuntu@54.174.100.219:/opt/tomcat/webapps/"
-       #- shell: ssh -oStrictHostKeyChecking=no -i /usr/share/master.pem ubuntu@54.174.100.219 "/opt/tomcat/bin/startup.sh"
-
-    publishers:
-       - logstash:
-          max-lines: -1
-          fail-build: false
-    wrappers:
-       - mask-passwords
-       - logstash:
-           use-redis: false
-
-- docker_image:
-    name: devopsbasservice/basejenkins_maven_git_java
->>>>>>> 6f400789a6709b7911bbb87d5782315e6fdc8d11
