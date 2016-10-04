@@ -4,7 +4,11 @@
 <%@ taglib prefix="petclinic" tagdir="/WEB-INF/tags" %>
 
 <petclinic:layout pageName="home">
+<<<<<<< HEAD
     <h2><fmt:message key="Welcome To Pet Clinic "/></h2>
+=======
+    <h2><fmt:message key="Welcome"/></h2>
+>>>>>>> 6f400789a6709b7911bbb87d5782315e6fdc8d11
     <div class="row">
         <div class="col-md-12">
             <spring:url value="/resources/images/pets.png" htmlEscape="true" var="petsImage"/>
