@@ -1,5 +1,5 @@
 # Spring PetClinic Sample Application [![Build Status](https://travis-ci.org/spring-projects/spring-petclinic.png?branch=master)](https://travis-ci.org/spring-projects/spring-petclinic/)
-=======
+
 # Spring Boot version of the Spring PetClinic Sample Application [![Build Status](https://travis-ci.org/spring-projects/spring-petclinic.png?branch=master)](https://travis-ci.org/spring-projects/spring-petclinic/)
 >>>>>>> 6f400789a6709b7911bbb87d5782315e6fdc8d11
 
