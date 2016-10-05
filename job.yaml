@@ -1,5 +1,5 @@
 - job:
-    name: spring_petclinic_jjb_kishor_newtest_<appndid>
+    name: spring_petclinic_jjb_kishor_demo_<appndid>
     project-type: freestyle
     defaults: global
     description: 'Build and Deploy of petclinc via JJB -Branch Kishor'
