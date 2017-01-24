@@ -31,7 +31,7 @@
        - maven-target:
             maven-version: Maven3
             pom: pom.xml
-            goals: clean install  sonar:sonar -Dsonar.host.url=http://54.174.126.12:9001/
+            goals: clean install  sonar:sonar -Dsonar.host.url=http://54.209.158.193:9001/
        #- shell: ssh -oStrictHostKeyChecking=no -i /usr/share/master.pem ubuntu@54.208.57.34 "ifconfig"
        #- shell: cd /var/jenkins/workspace/spring_petclinic_jjb_<appndid>/target/
        #- shell: ssh -oStrictHostKeyChecking=no -i /usr/share/master.pem ubuntu@54.208.57.34 "/opt/apache-tomcat-7.0.54/bin/shutdown.sh"
