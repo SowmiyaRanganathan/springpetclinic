@@ -50,6 +50,5 @@
        - mask-passwords
        - logstash:
            use-redis: false
-
 - docker_image:
     name: devopsbasservice/basejenkins_maven_git_java
