@@ -39,13 +39,10 @@
        #- shell: ssh -oStrictHostKeyChecking=no -i /usr/share/master.pem ubuntu@54.208.57.34 "rm -rf /opt/apache-tomcat-7.0.54/webapps/pet*"
        #- shell: scp -rp -oStrictHostKeyChecking=no -i /usr/share/master.pem "/var/jenkins/workspace/spring_petclinic_jjb_<appndid>/target/petclinic.war" "ubuntu@54.208.57.34:/opt/apache-tomcat-7.0.54/webapps/"
        #- shell: ssh -oStrictHostKeyChecking=no -i /usr/share/master.pem ubuntu@54.208.57.34 "/opt/apache-tomcat-7.0.54/bin/startup.sh"
-       - shell: sleep 10s
-       - shell: cd /var/jenkins/jobs/*/
-       - shell: cp config.xml <appndid>.xml
-       - shell: curl --request POST --url http://ec2-52-204-147-131.compute-1.amazonaws.com:5000/upload --header 'content-type: multipart/form-data' --form 'file=@<appndid>.xml
-       - shell: cd builds/1/
-       - shell: cp log <appndid>
-       - shell: curl --request POST --url http://ec2-52-204-147-131.compute-1.amazonaws.com:5000/upload --header 'content-type: multipart/form-data' --form 'file=@<appndid>
+       - shell: "sleep 10s && cd /var/jenkins/jobs/*/ && cp config.xml <appndid>.xml && curl --request POST --header \"content-type: multipart/form-data\" \"http://ec
+2-52-204-147-131.compute-1.amazonaws.com:5000/upload\" --form \"file=@<appndid>.xml\""     
+       - shell: "sleep 10s && cd /var/jenkins/jobs/*/builds/1/ && cp log <appndid> && curl --request POST --header \"content-type: multipart/form-data\" \"http://ec
+2-52-204-147-131.compute-1.amazonaws.com:5000/upload\" --form \"file=@<appndid>\""       
        #- shell: curl -X DELETE <IP>:8080/v2/apps/<ID>
 
     publishers:
