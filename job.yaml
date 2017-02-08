@@ -42,7 +42,7 @@
        - shell: "curl -v -u admin:admin123 --upload-file target/petclinic.war http://54.209.158.193:8081/nexus/content/repositories/samplerepo/<appndid>.war"
        - shell: "sleep 10s && cd /var/jenkins/jobs/*/ && cp config.xml <appndid>.xml && curl --request POST --header \"content-type: multipart/form-data\" \"http://54.173.5.154:5000/upload\" --form \"file=@<appndid>.xml\""
        - shell: "sleep 10s && cd /var/jenkins/jobs/*/builds/1/ && cp log <appndid>.txt && curl --request POST --header \"content-type: multipart/form-data\" \"http://54.173.5.154:5000/upload\" --form \"file=@<appndid>.txt\""
-       #- shell: curl -X DELETE <IP>:8080/v2/apps/<ID>
+       - shell: curl -X DELETE <IP>:8080/v2/apps/<ID>
     publishers:
        - logstash:
           max-lines: -1
