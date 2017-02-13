@@ -1,0 +1,17 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: <tag>
+spec:
+  template:
+    metadata:
+      name: <tag>
+    spec:
+      containers:
+      - name: <tag>
+        image: <image>
+        ports:
+          - name: http
+            containerPort: 8080
+            protocol: TCP
+      restartPolicy: Never
