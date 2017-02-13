@@ -1,14 +1,14 @@
 apiVersion: batch/v1
 kind: Job
 metadata:
-  name: <tag>
+  name: <tagid>
 spec:
   template:
     metadata:
-      name: <tag>
+      name: <tagid>
     spec:
       containers:
-      - name: <tag>
+      - name: <tagid>
         image: <image>
         ports:
           - name: http
