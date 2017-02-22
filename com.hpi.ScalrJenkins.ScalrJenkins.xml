@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<com.hpi.ScalrJenkins.ScalrJenkins_-DescriptorImpl plugin="ScalrJenkins@1.0-SNAPSHOT">
+  <envid>1</envid>
+  <scalrurl>https://scalr.cogdevops.com</scalrurl>
+  <scalraccessid>APIK9XUQ1702R1E90LA2</scalraccessid>
+  <scalraccesskey>zmnxRJs3zE5awYLNzwkaSRgZkj2WtsokTvUDZgla</scalraccesskey>
+</com.hpi.ScalrJenkins.ScalrJenkins_-DescriptorImpl>
