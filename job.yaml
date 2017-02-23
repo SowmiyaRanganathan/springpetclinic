@@ -32,17 +32,25 @@
             maven-version: Maven3
             pom: pom.xml
             goals: clean install -DskipTests=true sonar:sonar -Dsonar.host.url=http://204.236.215.231:9001/
-       #- shell: ssh -oStrictHostKeyChecking=no -i /usr/share/master.pem ubuntu@54.208.57.34 "ifconfig"
-       #- shell: cd /var/jenkins/workspace/spring_petclinic_jjb_<appndid>/target/
-       #- shell: ssh -oStrictHostKeyChecking=no -i /usr/share/master.pem ubuntu@54.208.57.34 "/opt/apache-tomcat-7.0.54/bin/shutdown.sh"
        - shell: sleep 10
-       #- shell: ssh -oStrictHostKeyChecking=no -i /usr/share/master.pem ubuntu@54.208.57.34 "rm -rf /opt/apache-tomcat-7.0.54/webapps/pet*"
-       #- shell: scp -rp -oStrictHostKeyChecking=no -i /usr/share/master.pem "/var/jenkins/workspace/spring_petclinic_jjb_<appndid>/target/petclinic.war" "ubuntu@54.208.57.34:/opt/apache-tomcat-7.0.54/webapps/"
-       #- shell: ssh -oStrictHostKeyChecking=no -i /usr/share/master.pem ubuntu@54.208.57.34 "/opt/apache-tomcat-7.0.54/bin/startup.sh"
        - shell: "curl -v -u admin:admin123 --upload-file target/petclinic.war http://204.236.215.231:8081/nexus/content/repositories/samplerepo/<appndid>.war"
        - shell: "sleep 10s && cd /var/jenkins/jobs/*/ && cp config.xml <appndid>.xml && curl --request POST --header \"content-type: multipart/form-data\" \"http://54.226.91.251:5000/upload\" --form \"file=@<appndid>.xml\""
        - shell: "sleep 10s && cd /var/jenkins/jobs/*/builds/1/ && cp log <appndid>.txt && curl --request POST --header \"content-type: multipart/form-data\" \"http://54.226.91.251:5000/upload\" --form \"file=@<appndid>.txt\""
-       #- shell: curl -X DELETE <IP>:8080/v2/apps/<ID>
+       - ScalrJenkins:
+          deployToAllServers: 'false'
+          deployUsingyaml: 'false'
+          deployToParticularServer: 'true'
+          deploymenttype: 'DeployToParticularServer'
+          env__Id__Server: '1'
+          farmName__Server: 'Kubernetes Cluster BuildOn (clone #1)'
+          ServerID__Server: '69c75a22-55e5-4d69-b908-69ea4691b7b1'
+          artifactUrl__Server: 'http://204.236.215.231:8081/nexus/content/repositories/samplerepo/<appndid>.war'
+          scriptId__Server: '16'
+          yamlFileName: ''
+          env__Id__All__servers: ''
+          farmName__All__servers: ''
+          artifactUrl__All__servers: ''
+          scriptId__All__servers: ''
     publishers:
        - logstash:
           max-lines: -1
