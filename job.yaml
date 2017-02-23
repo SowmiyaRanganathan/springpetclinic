@@ -60,4 +60,4 @@
        - logstash:
            use-redis: false
 - docker_image:
-    name: devopsbasservice/basejenkins_maven_git_java
+    name: devopsbasservice/basejenkins_maven_git_java_scalr
