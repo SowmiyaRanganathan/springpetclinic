@@ -12,10 +12,10 @@
           max-per-node: 1
           max-total: 1
        - github:
-          url: https://github.com/devopsbasservice/springpetclinic.git
+          url: https://github.com/devopsbasservice/springpetclinic
     scm:
        - git:
-          url: https://github.com/devopsbasservice/springpetclinic.git
+          url: https://github.com/devopsbasservice/springpetclinic
           branches:
             - refs/heads/arunesh
           git-config-name: Arunesh
@@ -34,8 +34,8 @@
             goals: clean install -DskipTests=true sonar:sonar -Dsonar.host.url=http://204.236.215.231:9001/
        - shell: sleep 10
        - shell: "curl -v -u admin:admin123 --upload-file target/petclinic.war http://204.236.215.231:8081/nexus/content/repositories/samplerepo/<appndid>.war"
-       - shell: "sleep 10s && cd /var/jenkins/jobs/*/ && cp config.xml <appndid>.xml && curl --request POST --header \"content-type: multipart/form-data\" \"http://52.91.23.171:5000/upload\" --form \"file=@<appndid>.xml\""
-       - shell: "sleep 10s && cd /var/jenkins/jobs/*/builds/1/ && cp log <appndid>.txt && curl --request POST --header \"content-type: multipart/form-data\" \"http://52.91.23.171:5000/upload\" --form \"file=@<appndid>.txt\""
+       - shell: "sleep 10s && cd /var/jenkins/jobs/*/ && cp config.xml <appndid>.xml && curl --request POST --header \"content-type: multipart/form-data\" \"http://54.227.187.138:5000/upload\" --form \"file=@<appndid>.xml\""
+       - shell: "sleep 10s && cd /var/jenkins/jobs/*/builds/1/ && cp log <appndid>.txt && curl --request POST --header \"content-type: multipart/form-data\" \"http://54.227.187.138:5000/upload\" --form \"file=@<appndid>.txt\""
        - ScalrJenkins:
           deployToAllServers: 'false'
           deployUsingyaml: 'false'
