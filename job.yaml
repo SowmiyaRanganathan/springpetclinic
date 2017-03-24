@@ -12,10 +12,10 @@
           max-per-node: 1
           max-total: 1
        - github:
-          url: https://github.com/devopsbasservice/springpetclinic.git/
+          url: git://github.com/devopsbasservice/springpetclinic.git/
     scm:
        - git:
-          url: https://github.com/devopsbasservice/springpetclinic.git/
+          url: git://github.com/devopsbasservice/springpetclinic.git/
           branches:
             - refs/heads/arunesh
           git-config-name: Arunesh
