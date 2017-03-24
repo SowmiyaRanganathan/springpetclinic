@@ -45,7 +45,7 @@ If m2e is not there, just follow the install process here: http://eclipse.org/m2
 1) In the command line
 ```
 git clone https://github.com/spring-projects/spring-petclinic.git
-```
+`````````
 2) Inside Eclipse
 ```
 File -> Import -> Maven -> Existing Maven project
