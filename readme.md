@@ -8,7 +8,7 @@
 	git clone https://github.com/spring-projects/spring-petclinic.git
 	cd spring-petclinic
 	./mvnw tomcat7:run
-````1111```123`1``````
+````1111```123`1`````````
 
 You can then access petclinic here: http://localhost:9966/petclinic/
 
