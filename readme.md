@@ -10,7 +10,7 @@
 	git checkout springboot  
 	./mvnw spring-boot:run 
 ``````````
-11```testsl123af112123```1````sdfgf``s.o.w.m.i
+11```testsl123af112123```1````sdfgf``testing
 You can then access petclinic here: http://localhost:8080/
 
 ## In case you find a bug/suggested improvement for Spring Petclinic
