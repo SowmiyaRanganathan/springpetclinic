@@ -1,8 +1,8 @@
 - job:
-    name: spring_petclinic_jjb_arunesh_demos_<appndid>
+    name: spring_petclinic_jjb_<appndid>
     project-type: freestyle
     defaults: global
-    description: 'Build and  Deploy of petsclinc via JJB -Branch arunesh'
+    description: 'Build and  Deploy of petsclinc via JJB -Branch BuildOn-Dev'
     block-downstream: true
     block-upstream: true
     concurrent: false
@@ -17,9 +17,9 @@
        - git:
           url: https://github.com/devopsbasservice/springpetclinic.git
           branches:
-            - refs/heads/arunesh
-          git-config-name: Arunesh
-          git-config-email: arunesh.m@cognizant.com
+            - refs/heads/BuildOn-Dev
+          git-config-name: devops
+          git-config-email: devops@cognizant.com
           force-polling-using-workspace: true
           extensions:
             per-build-tag: false          
