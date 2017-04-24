@@ -34,8 +34,8 @@
             goals: clean install -DskipTests=true sonar:sonar -Dsonar.host.url=http://204.236.215.231:9001/
        - shell: sleep 10
        - shell: "curl -v -u admin:admin123 --upload-file target/petclinic.war http://204.236.215.231:8081/nexus/content/repositories/samplerepo/<appndid>.war"
-       - shell: "sleep 10s && cd /var/jenkins/jobs/*/ && cp config.xml <appndid>.xml && curl --request POST --header \"content-type: multipart/form-data\" \"http://54.162.158.60:5000/upload\" --form \"file=@<appndid>.xml\""
-       - shell: "sleep 10s && cd /var/jenkins/jobs/*/builds/1/ && cp log <appndid>.txt && curl --request POST --header \"content-type: multipart/form-data\" \"http://54.162.158.60:5000/upload\" --form \"file=@<appndid>.txt\""
+       - shell: "sleep 10s && cd /var/jenkins/jobs/*/ && cp config.xml <appndid>.xml && curl --request POST --header \"content-type: multipart/form-data\" \"http://54.89.161.240:5000/upload\" --form \"file=@<appndid>.xml\""
+       - shell: "sleep 10s && cd /var/jenkins/jobs/*/builds/1/ && cp log <appndid>.txt && curl --request POST --header \"content-type: multipart/form-data\" \"http://54.89.161.240:5000/upload\" --form \"file=@<appndid>.txt\""
        - ScalrJenkins:
           deployToAllServers: 'false'
           deployUsingyaml: 'false'
