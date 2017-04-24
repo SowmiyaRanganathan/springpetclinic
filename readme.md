@@ -9,7 +9,7 @@
 	git checkout springboot  `````````
 	./mvnw spring-boot:run ``````````````111````````````````````````````````````1``````1````````````````
 `````````````demo````````````````````````````````````````````````
-You can then access petclinic here: http://localhost:8080/
+You can then access petclinic  here: http://localhost:8080/
 
 ## In case you find a bug/suggested improvement for Spring Petclinic
 Our issue tracker is available here: https://github.com/spring-projects/spring-petclinic/issues
