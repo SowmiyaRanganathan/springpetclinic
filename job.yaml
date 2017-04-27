@@ -2,7 +2,7 @@
     name: spring_petclinic_jjb_<appndid>
     project-type: freestyle
     defaults: global
-    description: 'Build and  Deploy of petsclinc via JJB -Branch BuildOn-Dev test !!!  UI testing 123'
+    description: 'Build and  Deploy of petsclinc via JJB -Branch BuildOn-Dev test !!!  UI testing 12345'
     block-downstream: true
     block-upstream: true
     concurrent: false
