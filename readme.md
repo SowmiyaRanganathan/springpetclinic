@@ -6,7 +6,7 @@
 ##  Running petclinic  locally  test comment```
 	git clone https://github.com/spring-projects/spring-petclinic.git
 	cd spring-petclinic 
-	git checkout springboot  ```````````````
+	git checkout springboot  `````````````````````
 	./mvnw spring-boot:run ````````````````````````````````````````````````````````````````````
 ```
 You can then access petclinic  here: http://localhost:8080/
