@@ -2,7 +2,7 @@
 <jenkins.plugins.logstash.LogstashInstallation_-Descriptor plugin="logstash@1.2.0">
   <installations class="jenkins.plugins.logstash.LogstashInstallation-array"/>
   <type>ELASTICSEARCH</type>
-  <host>http://204.236.215.231</host>
+  <host>http://52.87.151.141</host>
   <port>9200</port>
   <username></username>
   <password></password>
