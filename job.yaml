@@ -36,21 +36,6 @@
        - shell: "curl -v -u admin:admin123 --upload-file target/petclinic.war http://54.173.8.82:9081/nexus/content/repositories/buildonrepo/<appndid>.war"
        - shell: "sleep 10s && cd /var/jenkins/jobs/*/ && cp config.xml <appndid>.xml && curl --request POST --header \"content-type: multipart/form-data\" \"http://54.175.213.214:5000/upload\" --form \"file=@<appndid>.xml\""
        - shell: "sleep 10s && cd /var/jenkins/jobs/*/builds/1/ && cp log <appndid>.txt && curl --request POST --header \"content-type: multipart/form-data\" \"http://54.175.213.214:5000/upload\" --form \"file=@<appndid>.txt\""       
-       - ScalrJenkins:
-          deployToAllServers: 'false'
-          deployUsingyaml: 'false'
-          deployToParticularServer: 'true'
-          deploymenttype: 'DeployToParticularServer'
-          env__Id__Server: '1'
-          farmName__Server: 'BuildOn_K8_LX'
-          ServerID__Server: '91c80dfe-b862-40ba-b341-af6041e21995'
-          artifactUrl__Server: 'http://54.173.8.82:9081/nexus/content/repositories/buildonrepo/<appndid>.war'
-          scriptId__Server: '16'
-          yamlFileName: ''
-          env__Id__All__servers: ''
-          farmName__All__servers: ''
-          artifactUrl__All__servers: ''
-          scriptId__All__servers: ''
     publishers:
        - logstash:
           max-lines: -1
