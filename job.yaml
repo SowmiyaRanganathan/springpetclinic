@@ -44,7 +44,7 @@
           env__Id__Server: '1'
           farmName__Server: 'BuildOn_K8_LX'
           ServerID__Server: '91c80dfe-b862-40ba-b341-af6041e21995'
-          artifactUrl__Server: 'http://204.236.215.231:8081/nexus/content/repositories/buildonrepo/<appndid>.war'
+          artifactUrl__Server: 'http://54.173.8.82:9081/nexus/content/repositories/buildonrepo/<appndid>.war'
           scriptId__Server: '16'
           yamlFileName: ''
           env__Id__All__servers: ''
