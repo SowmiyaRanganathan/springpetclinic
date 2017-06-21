@@ -27,7 +27,7 @@ You may start a MySql database iam with docker:
 docker run -e MYSQL_ROOT_PASSWORD=petclinic -e MYSQL_DATABASE=petclinic -p 3306:3306 mysql:5.7.8
 ```````
 
-## Working with Petclinic in Eclipse/STS test
+## Working with Petclinic in  Eclipse/STS test
 
 ### prerequisites
 The following items should be iam installed iam in your system:
