@@ -1,0 +1,116 @@
+- project:
+    name: Onlinebanking_Build_DevOps_Project
+    jobs:
+        - 'Onlinebanking_Build_<appndid>'
+        - 'Onlinebanking_CodeAnalysis_<appndid>'
+        - 'Onlinebanking_NexusUpload_<appndid>'
+- job-template:
+    name: 'Onlinebanking_Build_<appndid>'
+    id: Onlinebanking_Build_<appndid>
+    project-type: freestyle
+    defaults: global
+    description: 'Build and deploy artifact '
+    block-downstream: true
+    block-upstream: true
+    concurrent: false
+    node: master
+    workspace: /var/jenkins/workspace/Onlinebanking_Build_<appndid>
+    child-workspace: /var/jenkins/workspace/Onlinebanking_Build_<appndid>
+    
+    properties:
+       - throttle:
+          max-per-node: 1
+          max-total: 1
+    scm:
+       - git:
+          url: http://50.17.36.28/root/onlinebanking.git
+          branches:
+            - refs/heads/master
+          git-config-name: devops
+          git-config-email: devops@cognizant.com
+          force-polling-using-workspace: true
+          extensions:
+            per-build-tag: false
+          clean:
+            # we don't clean and re-initialize the repo
+            before: false
+          # we don't clean a workspace, so we need   to remove rpms manually
+          wipe-workspace: false
+    triggers:
+       - pollscm:
+          cron: "* * * * *"
+          ignore-post-commit-hooks: True
+    builders:
+       - maven-target:
+            maven-version: Maven3
+            pom: pom.xml
+            goals: clean install -DskipTests
+    publishers:
+       - logstash:
+          max-lines: -1
+          fail-build: false
+       - trigger:
+          project: Onlinebanking_CodeAnalysis_<appndid>
+    wrappers:
+       - timeout:
+          # Timeout job after 120 seconds of its execution. If timeout happens = fail the build.
+          timeout: 30
+       - logstash:
+           use-redis: false
+- job-template:
+    name: 'Onlinebanking_CodeAnalysis_<appndid>'
+    id: Onlinebanking_CodeAnalysis_<appndid>
+    project-type: freestyle
+    defaults: global
+    description: 'Build and deploy artifact'
+    block-downstream: true
+    block-upstream: true
+    concurrent: false
+    node: master
+    workspace: /var/jenkins/workspace/Onlinebanking_Build_<appndid>
+    child-workspace: /var/jenkins/workspace/Onlinebanking_Build_<appndid>
+    properties:
+       - throttle:
+          max-per-node: 1
+          max-total: 1
+    builders:
+       - maven-target:
+            maven-version: Maven3
+            pom: pom.xml
+            goals: sonar:sonar -Dsonar.host.url=http://54.209.104.148:9001/ -Dmaven.test.failure.ignore=true -DskipTests=true -Dsonar.sources=src/main/java
+    publishers:
+       - logstash:
+          max-lines: -1
+          fail-build: false
+       - trigger:
+          project: Onlinebanking_NexusUpload_<appndid>
+    wrappers:
+       - logstash:
+           use-redis: false
+- job-template:
+    name: 'Onlinebanking_NexusUpload_<appndid>'
+    id: Onlinebanking_NexusUpload_<appndid>
+    project-type: freestyle
+    defaults: global
+    description: 'Build and deploy artifact'
+    block-downstream: true
+    block-upstream: true
+    concurrent: false
+    node: master
+    workspace: /var/jenkins/workspace/Onlinebanking_Build_<appndid>
+    child-workspace: /var/jenkins/workspace/Onlinebanking_Build_<appndid>
+    properties:
+       - throttle:
+          max-per-node: 1
+          max-total: 1
+    builders:
+       - shell: "curl -v -u admin:admin123 --upload-file  /var/jenkins/workspace/Onlinebanking_Build_<appndid>/target/onlinebanking.war http://54.209.104.148:8081/nexus/content/repositories/buildonrepo/<appndid>.war"
+    publishers:
+       - logstash:
+          max-lines: -1
+          fail-build: false
+    wrappers:
+       - logstash:
+           use-redis: false
+- docker_image:
+    name: devopsbasservice/buildonframework:buildon
