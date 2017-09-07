@@ -1,9 +1,9 @@
 env.dockerimagename="devopsbasservice/buildonframework:buildon-jenkinsfile"
 node {
    stage ('Banking_Build') {
-   //If some other Repository is to be given apart from current repo, provide git URL as below         
+   //If some other Repository is to be given apart from current repo, provide git URL as below           
    //git url:'http://50.17.36.28/root/onlinebanking.git'         
-   //CS demo...
+   //CS demo......
 
     checkout scm
     sh 'mvn clean package -DskipTests=True'
