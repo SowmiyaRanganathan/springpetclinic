@@ -21,6 +21,6 @@ node {
     //sh  'echo DNS domain $(hostname -d)'
 	//sh 'echo Fully qualified domain name $(hostname -f)''
 	//sh 'echo Network address (IP)   $(hostname -i)'
-	//sh 'echo DNS name servers (DNS IP)  ${dnsips}'
+	//sh 'echo DNS name servers (DNS IP)  ${dnsips}'     
    } 
 }
